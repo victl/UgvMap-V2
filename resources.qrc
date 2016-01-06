@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/divideCarTrack.png</file>
+        <file>images/export3B.png</file>
+        <file>images/exportPNG.png</file>
+        <file>images/exportSVG.png</file>
+        <file>images/fitLine.png</file>
+        <file>images/laneSearch.png</file>
+        <file>images/openGridMap.png</file>
+        <file>images/openHDL.png</file>
+        <file>images/openRNDF.png</file>
+        <file>images/openSVG.png</file>
+        <file>images/openTask.png</file>
+        <file>images/spheres.svg</file>
+        <file>images/saveMixedMap.png</file>
+        <file>images/saveRNDF.png</file>
+        <file>images/importTask.png</file>
+        <file>images/exportRoute.png</file>
+        <file>images/exit.png</file>
+        <file>images/openMixedMap.png</file>
+        <file>images/cartrackpoint.png</file>
+        <file>images/car.png</file>
+        <file>images/lanepoint.png</file>
+    </qresource>
+</RCC>

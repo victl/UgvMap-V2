@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>897</width>
+    <height>823</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>897</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionOpenHdl"/>
+    <addaction name="actionLoadMapMeta"/>
+    <addaction name="actionOpenGridMap"/>
+    <addaction name="actionOpenMixedMap"/>
+    <addaction name="actionImportTaskDescription"/>
+    <addaction name="actionAddMapClip"/>
+    <addaction name="actionSaveMixedMap"/>
+    <addaction name="actionSaveRndf"/>
+    <addaction name="actionExportFinalRoute"/>
+    <addaction name="actionSaveMergedMap"/>
+    <addaction name="actionWriteBoundaryBit"/>
+    <addaction name="actionClose"/>
+    <addaction name="actionHdlToTxt"/>
+   </widget>
+   <widget class="QMenu" name="menu_Edit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionHand"/>
+    <addaction name="actionEditor"/>
+    <addaction name="actionDrawSegment"/>
+    <addaction name="actionDrawLaneLine"/>
+    <addaction name="actionDrawLane"/>
+    <addaction name="actionAddKeyPoint"/>
+    <addaction name="actionDrawIntersection"/>
+    <addaction name="actionAddConnection"/>
+    <addaction name="actionCurveAjustor"/>
+    <addaction name="actionSpeedAdjustor"/>
+    <addaction name="separator"/>
+    <addaction name="actionClearAll"/>
+    <addaction name="actionReArrangeIds"/>
+   </widget>
+   <widget class="QMenu" name="menu_Simulator">
+    <property name="title">
+     <string>&amp;Simulator</string>
+    </property>
+    <addaction name="actionSelectRoutePoints"/>
+    <addaction name="actionClearRoutePoints"/>
+    <addaction name="actionFindPath"/>
+    <addaction name="actionImportTrack"/>
+    <addaction name="actionClearTrack"/>
+    <addaction name="actionFindByHdl"/>
+    <addaction name="actionSaveRkPts"/>
+    <addaction name="actionRestoreRkPts"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menu_Edit"/>
+   <addaction name="menu_Simulator"/>
+  </widget>
+  <widget class="QToolBar" name="fileToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOpenHdl"/>
+   <addaction name="actionOpenGridMap"/>
+   <addaction name="actionOpenMixedMap"/>
+   <addaction name="actionImportTaskDescription"/>
+   <addaction name="actionSaveMixedMap"/>
+   <addaction name="actionSaveRndf"/>
+   <addaction name="actionExportFinalRoute"/>
+   <addaction name="actionClose"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="propertiesDock">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>480</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>P&amp;roperties</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>15</y>
+       <width>221</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Common</string>
+     </property>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>120</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Line Color:</string>
+      </property>
+     </widget>
+     <widget class="ColorLabel" name="lineColorLabel">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>120</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>150</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Fill Color:</string>
+      </property>
+     </widget>
+     <widget class="ColorLabel" name="fillColorLabel">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>150</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>-10</x>
+        <y>170</y>
+        <width>181</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget1">
+      <property name="geometry">
+       <rect>
+        <x>1</x>
+        <y>21</y>
+        <width>171</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>id:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="idEdit">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget2">
+      <property name="geometry">
+       <rect>
+        <x>1</x>
+        <y>90</y>
+        <width>171</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Width:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="widthSpin"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>56</y>
+        <width>171</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="nameEdit"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>210</y>
+       <width>181</width>
+       <height>341</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Additional</string>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>121</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>X:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="xLabel">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>121</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Y:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="yLabel">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>183</y>
+        <width>41</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Flag:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="trackCombo">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>180</y>
+        <width>131</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>113</y>
+        <width>49</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>P2:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="prop2Combo">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>113</y>
+        <width>151</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>1</x>
+        <y>84</y>
+        <width>49</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>P1:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="prop1Combo">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>83</y>
+        <width>151</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>120</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>143</y>
+        <width>171</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Speed:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="speedEdit"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>213</y>
+        <width>63</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Type:</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="typeCombo">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>210</y>
+        <width>131</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <zorder>layoutWidget</zorder>
+     <zorder>layoutWidget3</zorder>
+     <zorder>label_12</zorder>
+     <zorder>label_11</zorder>
+     <zorder>prop2Combo</zorder>
+     <zorder>label_10</zorder>
+     <zorder>prop1Combo</zorder>
+     <zorder>layoutWidget</zorder>
+     <zorder>trackCombo</zorder>
+     <zorder>label_9</zorder>
+     <zorder>typeCombo</zorder>
+    </widget>
+    <widget class="Line" name="line_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>171</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="loggerDock">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Logger</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <widget class="QPlainTextEdit" name="logger">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>191</width>
+       <height>190</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>191</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="sizeIncrement">
+      <size>
+       <width>0</width>
+       <height>5</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>191</width>
+       <height>150</height>
+      </size>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <action name="actionOpenHdl">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/openHDL.png</normaloff>:/images/openHDL.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open &amp;HDL</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionOpenGridMap">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/openGridMap.png</normaloff>:/images/openGridMap.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open &amp;Grid map</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionSaveMixedMap">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/saveMixedMap.png</normaloff>:/images/saveMixedMap.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save Mixed map</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+M</string>
+   </property>
+  </action>
+  <action name="actionSaveRndf">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/saveRNDF.png</normaloff>:/images/saveRNDF.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save &amp;RNDF</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionImportTaskDescription">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/importTask.png</normaloff>:/images/importTask.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import &amp;Task Description</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="actionExportFinalRoute">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/exportRoute.png</normaloff>:/images/exportRoute.png</iconset>
+   </property>
+   <property name="text">
+    <string>Export  &amp;Final Route</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/exit.png</normaloff>:/images/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionDrawSegment">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Draw &amp;Segment</string>
+   </property>
+   <property name="shortcut">
+    <string>S</string>
+   </property>
+  </action>
+  <action name="actionOpenMixedMap">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/openMixedMap.png</normaloff>:/images/openMixedMap.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open &amp;Mixed map</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="actionAddKeyPoint">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Add &amp;Key Point</string>
+   </property>
+   <property name="shortcut">
+    <string>K</string>
+   </property>
+  </action>
+  <action name="actionDrawLaneLine">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Draw &amp;LaneLine</string>
+   </property>
+   <property name="shortcut">
+    <string>L</string>
+   </property>
+  </action>
+  <action name="actionEditor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Editor</string>
+   </property>
+   <property name="shortcut">
+    <string>E</string>
+   </property>
+  </action>
+  <action name="actionHand">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Hand</string>
+   </property>
+   <property name="shortcut">
+    <string>H</string>
+   </property>
+  </action>
+  <action name="actionAddConnection">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Add &amp;Connection</string>
+   </property>
+   <property name="shortcut">
+    <string>C</string>
+   </property>
+  </action>
+  <action name="actionImportTrack">
+   <property name="text">
+    <string>Import &amp;Track</string>
+   </property>
+  </action>
+  <action name="actionLoadMapMeta">
+   <property name="text">
+    <string>Load Map M&amp;eta</string>
+   </property>
+  </action>
+  <action name="actionDrawIntersection">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Draw Intersection</string>
+   </property>
+   <property name="shortcut">
+    <string>I</string>
+   </property>
+  </action>
+  <action name="actionDrawLane">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Draw L&amp;ane</string>
+   </property>
+   <property name="shortcut">
+    <string>A</string>
+   </property>
+  </action>
+  <action name="actionSelectRoutePoints">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Select Route Points</string>
+   </property>
+   <property name="shortcut">
+    <string>R</string>
+   </property>
+  </action>
+  <action name="actionDrawLane_2">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Draw L&amp;ane</string>
+   </property>
+   <property name="shortcut">
+    <string>A</string>
+   </property>
+  </action>
+  <action name="actionCurveAjustor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Curve A&amp;justor</string>
+   </property>
+   <property name="shortcut">
+    <string>J</string>
+   </property>
+  </action>
+  <action name="actionClearAll">
+   <property name="text">
+    <string>Clear Everything!</string>
+   </property>
+  </action>
+  <action name="actionReArrangeIds">
+   <property name="text">
+    <string>Re-arrange ids</string>
+   </property>
+  </action>
+  <action name="actionClearRoutePoints">
+   <property name="text">
+    <string>&amp;Clear Route Points</string>
+   </property>
+  </action>
+  <action name="actionFindPath">
+   <property name="text">
+    <string>&amp;Find Path</string>
+   </property>
+  </action>
+  <action name="actionFindByHdl">
+   <property name="text">
+    <string>Find Lane Line by &amp;HDL</string>
+   </property>
+  </action>
+  <action name="actionClearTrack">
+   <property name="text">
+    <string>Clear Track</string>
+   </property>
+  </action>
+  <action name="actionWriteBoundaryBit">
+   <property name="text">
+    <string>Write &amp;Boundary Bit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionHdlToTxt">
+   <property name="text">
+    <string>Write Frame to txt</string>
+   </property>
+  </action>
+  <action name="actionSaveRkPts">
+   <property name="text">
+    <string>Save Route Key Points</string>
+   </property>
+  </action>
+  <action name="actionRestoreRkPts">
+   <property name="text">
+    <string>Restore Route Key Points</string>
+   </property>
+  </action>
+  <action name="actionSpeedAdjustor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Spee&amp;d Adjustor</string>
+   </property>
+  </action>
+  <action name="actionAddMapClip">
+   <property name="text">
+    <string>Add Map Clip</string>
+   </property>
+  </action>
+  <action name="actionSaveMergedMap">
+   <property name="text">
+    <string>Save Merged Map</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ColorLabel</class>
+   <extends>QLabel</extends>
+   <header>colorlabel.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>idEdit</tabstop>
+  <tabstop>widthSpin</tabstop>
+  <tabstop>xLabel</tabstop>
+  <tabstop>yLabel</tabstop>
+  <tabstop>prop1Combo</tabstop>
+  <tabstop>prop2Combo</tabstop>
+  <tabstop>speedEdit</tabstop>
+  <tabstop>trackCombo</tabstop>
+ </tabstops>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionClose</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>448</x>
+     <y>322</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
